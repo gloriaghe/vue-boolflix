@@ -1,11 +1,11 @@
 <template>
   
     <div class="cardFilm">
-        <img class="imgProgramma" :src="'https://image.tmdb.org/t/p/w342/'+singleCard.backdrop_path" :alt="singleCard.name">
+        <img class="imgProgramma" :src="'https://image.tmdb.org/t/p/w342/'+singleCard.backdrop_path" :alt="singleCard.title">
         <h2>Titolo: {{singleCard.title}} </h2>
         <h3>Titolo originale: {{singleCard.original_title}}</h3>
         <span>Lingua: {{singleCard.original_language}}</span>
-        <img :src="flag(this.singleCard.original_language)" :alt="singleCard.original_language">
+        <img class="flag" :src="flag(this.singleCard.original_language)" :alt="singleCard.original_language">
         <span>Voto: {{singleCard.vote_average}}</span>
     </div>
  
@@ -19,14 +19,17 @@ export default {
   },
   data(){
     return {
-        myFlag: ""
+        
     }
   },
   methods:{
     flag(lingua){
-        
-            this.myFlag = require('../assets/flag/' + lingua + ".png")
-            console.log("LINK:", this.myFlag)
+           if(lingua === "en" || lingua === "it" || lingua === "es" || lingua === "fr" ){
+
+               return require('../assets/flag/' + lingua + ".png")
+           } else {
+            return require('../assets/flag/all.png')
+           }
         
     }
 }
@@ -44,6 +47,10 @@ div{
         
         .imgProgramma{
             max-width:80%
+        }
+
+        .flag{
+            width: 10%;
         }
     }
 }
