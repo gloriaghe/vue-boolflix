@@ -1,7 +1,7 @@
 <template>
   
     <div class="cardFilm">
-        <img :src="'https://image.tmdb.org/t/p/w342/'+singleCard.poster_path" :alt="singleCard.name">
+        <img  class="imgProgramma" :src="'https://image.tmdb.org/t/p/w342/'+singleCard.poster_path" :alt="singleCard.name">
         <h2>Titolo: {{singleCard.name}} </h2>
         <h3>Titolo originale: {{singleCard.original_name}}</h3>
         <span>Lingua: {{singleCard.original_language}}</span>
@@ -39,8 +39,12 @@ div{
     display: flex;
     flex-direction: column;
 
-    #cardFilm{
+    .cardFilm{
+        width: 20%;
         
+        .imgProgramma{
+            max-width:80%
+        }
     }
 }
 </style>
