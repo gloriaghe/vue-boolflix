@@ -42,6 +42,7 @@ export default {
           console.log("Errore", error);
         })
     },
+    
     searchMovie(filmUser){
         this.userFilm= filmUser
         console.log(this.userFilm)

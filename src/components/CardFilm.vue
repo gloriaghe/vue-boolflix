@@ -4,6 +4,7 @@
         <h2>Titolo: {{singleCard.title}} </h2>
         <h3>Titolo originale: {{singleCard.original_title}}</h3>
         <span>Lingua: {{singleCard.original_language}}</span>
+        <img :src="flag(this.singleCard.original_language)" :alt="singleCard.original_language">
         <span>Voto: {{singleCard.vote_average}}</span>
     </div>
  
@@ -17,9 +18,17 @@ export default {
   },
   data(){
     return {
+        myFlag: ""
+    }
+  },
+  methods:{
+    flag(lingua){
+        
+            this.myFlag = require('../assets/flag/' + lingua + ".png")
+            console.log("LINK:", this.myFlag)
         
     }
-  }
+}
 }
 </script>
 
