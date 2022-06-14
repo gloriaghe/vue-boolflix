@@ -16,9 +16,10 @@ export default {
     },
     data() {
         return {
-            apiUrl: "https://api.themoviedb.org/3/search/movie?api_key=65f992091f5fb4cada3e4991ff084ab7&language=it-IT&query=am",
+            apiUrl: "https://api.themoviedb.org/3/search/movie?api_key=65f992091f5fb4cada3e4991ff084ab7&language=it-IT&query=",
             movieTotal:{},
             movieCard: [],
+            userFilm:"",
         }
     },
     created(){
@@ -36,6 +37,9 @@ export default {
         .catch((error) => {
           console.log("Errore", error);
         })
+    },
+    searchMovie(filmUser){
+        this.userFilm= filmUser
     }
 }
 }
