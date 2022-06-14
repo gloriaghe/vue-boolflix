@@ -9,6 +9,7 @@
         <img class="flag" :src="flag(this.singleCard.original_language)" :alt="singleCard.original_language">
         <span>Voto: {{ singleCard.vote_average }}</span>
         <span>{{ this.voto1a5 }}</span>
+        
 
     </div>
 
@@ -23,6 +24,7 @@ export default {
     data() {
         return {
             voto1a5: "",
+            stelline: '<font-awesome-icon icon="fa-regular fa-star" />'
 
         }
     },
@@ -42,6 +44,7 @@ export default {
         },
         voto() {
             this.voto1a5 = Math.ceil(this.singleCard.vote_average / 2)
+
         }
     }
 }
