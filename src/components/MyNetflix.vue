@@ -1,11 +1,15 @@
 <template>
     <div id="appCerca">
         <SearchMovie  @search="searchMovie"/>
-        <div id="cards">
+        <div>
             <h1>Film</h1>
-            <CardFilm v-for="(element, i) in movieCard" :key="i" :singleCard="element"/>
+            <div class="cards" >
+                <CardFilm v-for="(element, i) in movieCard" :key="i" :singleCard="element"/>
+            </div>
             <h1 id="TV">TV</h1>
-            <CardTV v-for="element in movieTVCard" :key="element.id" :singleCard="element"/>
+            <div class="cards" >
+                <CardTV v-for="element in movieTVCard" :key="element.id" :singleCard="element"/>
+            </div>
         </div>
     </div>
 </template>
@@ -81,7 +85,7 @@ export default {
 <style scoped lang="scss">
 #appCerca {
  
- #cards{
+ .cards{
     display: flex;
     flex-wrap: wrap;
     flex-basis: 30%;
