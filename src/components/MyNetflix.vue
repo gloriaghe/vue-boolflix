@@ -1,6 +1,8 @@
 <template>
     <div id="appCerca">
         <SearchMovie  @search="searchMovie"/>
+        <!-- <font-awesome-icon icon="fa-solid fa-star" /> -->
+        <font-awesome-icon icon="fa-regular fa-star" />
         <div>
             <h1>Film</h1>
             <div class="cards" >
