@@ -1,18 +1,23 @@
 <template>
-    <div class="">
-        <SearchMovie />
+    <div id="appCerca">
+        <SearchMovie  @search="searchMovie"/>
+        <div id="cards">
+            <CardFilm v-for="(element, i) in movieCard" :key="i" :singleCard="element"/>
+        </div>
     </div>
 </template>
 
 <script>
 import axios from "axios";
 import SearchMovie from './SearchMovie.vue';
+import CardFilm from './CardFilm.vue';
 
 export default {
     name: "MyNetflix",
     props: {},
     components: {
         SearchMovie,
+        CardFilm,
     },
     data() {
         return {
@@ -23,11 +28,10 @@ export default {
         }
     },
     created(){
-        this.getMovie(this.apiUrl)
     },
     methods: {
         getMovie(API){
-            axios.get(API)
+            axios.get(API+this.userFilm)
         .then((result) => {
             this.movieTotal = result.data;
             this.movieCard = this.movieTotal.results
@@ -40,6 +44,8 @@ export default {
     },
     searchMovie(filmUser){
         this.userFilm= filmUser
+        console.log(this.userFilm)
+        this.getMovie(this.apiUrl)
     }
 }
 }
@@ -49,7 +55,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-div {
-
+#appCerca {
+ 
+ #cards{
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 30%;
+    margin-right: 30px;
+ }
 }
 </style>

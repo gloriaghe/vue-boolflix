@@ -1,9 +1,9 @@
 <template>
   
-    <form>
-        <input type="text" placeholder="Cosa vuoi vedere?" v-model="inputCerca" @input="$emit('search', inputCerca)">
-        <button>Cerca</button>
-    </form>
+    <div>
+        <input type="text" placeholder="Cosa vuoi vedere?" v-model="inputCerca" @keyup.enter="$emit('search', inputCerca)">
+        <button  @click="$emit('search', inputCerca)">Cerca</button >
+    </div>
  
 </template>
 
@@ -23,7 +23,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-form{
-    
-}
+
 </style>
