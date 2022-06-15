@@ -4,7 +4,7 @@
         <img class="imgProgramma" :src="'https://image.tmdb.org/t/p/w342/' + singleCard.poster_path"
             :alt="singleCard.name">
         <div class="textCard">
-            <h2>Titolo: {{ singleCard.name }} </h2>
+            <h3>Titolo: {{ singleCard.name }} </h3>
             <h3 if="singleCard.name !=  singleCard.original_name">Titolo originale: {{ singleCard.original_name }}</h3>
             <span>Lingua: {{ singleCard.original_language }}</span>
             <img class="flag" :src="flag(singleCard.original_language)" :alt="singleCard.original_language">

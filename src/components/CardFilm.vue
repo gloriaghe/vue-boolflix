@@ -4,8 +4,7 @@
         <img class="imgProgramma" :src="'https://image.tmdb.org/t/p/w342/' + singleCard.poster_path"
             :alt="singleCard.title">
         <div class="textCard">
-
-            <h2><strong>Titolo:</strong>  {{ singleCard.title }} </h2>
+            <h3><strong>Titolo:</strong> {{ singleCard.title }} </h3>
             <h3>Titolo originale: {{ singleCard.original_title }}</h3>
             <span>Lingua: {{ singleCard.original_language }}</span>
             <img class="flag" :src="flag(this.singleCard.original_language)" :alt="singleCard.original_language">
@@ -30,7 +29,7 @@ export default {
     props: {
         singleCard: Object
     },
-    
+
     data() {
         return {
             voto1a5: "",
