@@ -7,8 +7,12 @@
         <h3>Titolo originale: {{ singleCard.original_name }}</h3>
         <span>Lingua: {{ singleCard.original_language }}</span>
         <img class="flag" :src="flag(singleCard.original_language)" :alt="singleCard.original_language">
-        <span>Voto: {{ singleCard.vote_average }}</span>
-        <span>{{ this.voto1a5 }}</span>
+        <span >
+            <font-awesome-icon v-for="(element, i) in voto()" :key="i" icon="fa-solid fa-star"/>
+            <font-awesome-icon v-for="(element, i) in voto()" :key="i" icon="fa-solid fa-star"/>
+
+        </span>
+
     </div>
 
 </template>
@@ -39,7 +43,10 @@ export default {
 
         },
         voto() {
-            this.voto1a5 = Math.ceil(this.singleCard.vote_average / 2)
+            return Math.ceil(this.singleCard.vote_average / 2)
+        },
+        voto5(){
+
         }
     }
 }

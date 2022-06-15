@@ -7,11 +7,10 @@
         <h3>Titolo originale: {{ singleCard.original_title }}</h3>
         <span>Lingua: {{ singleCard.original_language }}</span>
         <img class="flag" :src="flag(this.singleCard.original_language)" :alt="singleCard.original_language">
-        <span>Voto: {{ singleCard.vote_average }}</span>
-        <span>Voto da 1 a 5: {{ this.voto1a5 }}</span>
-        <span v-html="voto()"></span>
-        <font-awesome-icon icon="fa-regular fa-star" />
-
+        <!-- <span>Voto: {{ singleCard.vote_average }}</span> -->
+        <span >
+            <font-awesome-icon v-for="(element, i) in voto()" :key="i" icon="fa-solid fa-star"/>
+        </span>
     </div>
 
 </template>
@@ -26,8 +25,9 @@ export default {
         return {
             voto1a5: "",
             stelline: '<font-awesome-icon icon="fa-regular fa-star"/>',
-            // stellinePiene: '<font-awesome-icon icon="fa-regular fa-star"/>'
-
+            stellinePiene1: '<font-awesome-icon icon="fa-regular fa-star"/>',
+            stelline2: '<font-awesome-icon icon="fa-regular fa-star"/>',
+            stellinePiene2: '<font-awesome-icon icon="fa-regular fa-star"/>'
         }
     },
     mounted() {
@@ -45,33 +45,9 @@ export default {
 
         },
         voto() {
-            this.voto1a5 = Math.ceil(this.singleCard.vote_average / 2)
+            return Math.ceil(this.singleCard.vote_average / 2)
 
-            if (this.voto1a5 == "1") {
-                return this.stelline;
-            } else if (this.voto1a5 == "2") {
-                return this.stelline;
-            } else if (this.voto1a5 == "3") {
-                return this.stelline;
-            } else if (this.voto1a5 == "4") {
-                return this.stelline;
-            } else {
-                return this.stelline;
-
-            }
-            // switch (Math.ceil(this.singleCard.vote_average / 2)) {
-            //     case "1":
-            //         return "f005" ;
-            //     case "2":
-            //         return "f005 f005";
-            //     case "3":
-            //         return "f005";
-            //     case "4":
-            //         return "f005";
-            //     case "5":
-            //         return "f005"
-
-            // }
+           
         }
     }
 }
