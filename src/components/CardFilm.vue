@@ -10,10 +10,13 @@
             <span>Lingua: {{ singleCard.original_language }}</span>
             <img class="flag" :src="flag(this.singleCard.original_language)" :alt="singleCard.original_language">
             <!-- <span>Voto: {{ singleCard.vote_average }}</span> -->
-            <span class="stelle">
-                <font-awesome-icon v-for="(element, i) in voto()" :key="i + 'n'" icon="fa-solid fa-star" />
-                <font-awesome-icon v-for="(element, i) in voto5()" :key="i" icon="fa-regular fa-star" />
-            </span>
+            <div class="voto">
+                <span><strong>Voto: </strong></span>
+                <span class="stelle">
+                    <font-awesome-icon v-for="(element, i) in voto()" :key="i + 'n'" icon="fa-solid fa-star" />
+                    <font-awesome-icon v-for="(element, i) in voto5()" :key="i" icon="fa-regular fa-star" />
+                </span>
+            </div>
             <span>{{ singleCard.overview }}</span>
         </div>
     </div>

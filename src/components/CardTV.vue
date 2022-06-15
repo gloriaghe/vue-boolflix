@@ -8,10 +8,13 @@
             <h3 if="singleCard.name !=  singleCard.original_name">Titolo originale: {{ singleCard.original_name }}</h3>
             <span>Lingua: {{ singleCard.original_language }}</span>
             <img class="flag" :src="flag(singleCard.original_language)" :alt="singleCard.original_language">
-            <span>
-                <font-awesome-icon v-for="(element, i) in voto()" :key="i + 'n'" icon="fa-solid fa-star" />
-                <font-awesome-icon v-for="(element, i) in voto5()" :key="i" icon="fa-regular fa-star" />
-            </span>
+            <div class="voto">
+                <span><strong>Voto: </strong></span>
+                <span class="stelle">
+                    <font-awesome-icon v-for="(element, i) in voto()" :key="i + 'n'" icon="fa-solid fa-star" />
+                    <font-awesome-icon v-for="(element, i) in voto5()" :key="i" icon="fa-regular fa-star" />
+                </span>
+            </div>
             <span>{{ singleCard.overview }}</span>
         </div>
 
@@ -57,7 +60,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
 @import '../assets/card.scss';
-
 </style>

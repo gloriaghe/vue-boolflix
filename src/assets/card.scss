@@ -3,9 +3,9 @@ div {
     flex-direction: column;
 
     .cardFilm {
-        width: 23%;
+        width: 20%;
         margin-right: 2%;
-        height: 350px;
+        height: 400px;
         position: relative;
         border: 2px solid white;
         margin-bottom: 20px;
@@ -17,7 +17,7 @@ div {
         .imgProgramma {
             width: 100%;
             object-fit: cover;
-            object-position: center;
+            object-position:  center;
             position: absolute;
             height: 100%;
             top: 0;
@@ -50,10 +50,15 @@ div {
                 width: 10%;
                 margin-top: 10px;
             }
-
-            .stelle {
-                color: yellow;
+            
+            .voto{
+                display: inline;
                 margin: 10px 0;
+                
+                .stelle {
+                    color: yellow;
+                    
+                }
             }
         }
     }

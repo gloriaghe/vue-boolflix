@@ -9,13 +9,11 @@
         <CardTV v-for="element in movieTVCard" :key="element.id" :singleCard="element" />
       </div>
     </main>
-    <!-- <MyNetflix/> -->
   </div>
 </template>
 
 <script>
 import axios from "axios";
-// import MyNetflix from './components/MyNetflix.vue'
 import HeaderMovie from './components/HeaderMovie.vue'
 import CardFilm from './components/CardFilm.vue';
 import CardTV from './components/CardTV.vue';
@@ -23,7 +21,6 @@ import CardTV from './components/CardTV.vue';
 export default {
   name: 'App',
   components: {
-    // MyNetflix,
     HeaderMovie,
     CardFilm,
     CardTV
@@ -95,7 +92,7 @@ export default {
       height: calc(100vh - 80px);
       overflow: auto;
       padding: 0 10%;
-      padding-top: 20px;
+      padding-top: 40px;
 
       h2{
         width: 100%;
