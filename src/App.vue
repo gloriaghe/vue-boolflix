@@ -80,8 +80,10 @@ export default {
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
-  color: #2c3e50;
+  color: white;
+  background-color: #1c2b3b;
   width: 100%;
+  height: 100vh;
  
 
   main {
@@ -90,6 +92,10 @@ export default {
       flex-wrap: wrap;
       flex-basis: 30%;
       margin-right: 30px;
+      height: calc(100vh - 80px);
+      overflow: auto;
+      padding: 0 10%;
+      padding-top: 20px;
 
       h2{
         width: 100%;
