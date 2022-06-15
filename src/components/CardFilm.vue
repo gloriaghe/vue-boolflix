@@ -9,7 +9,9 @@
         <img class="flag" :src="flag(this.singleCard.original_language)" :alt="singleCard.original_language">
         <!-- <span>Voto: {{ singleCard.vote_average }}</span> -->
         <span >
-            <font-awesome-icon v-for="(element, i) in voto()" :key="i" icon="fa-solid fa-star"/>
+            <font-awesome-icon v-for="(element, i) in voto()" :key="i+'n'" icon="fa-solid fa-star"/>
+                        <font-awesome-icon v-for="(element, i) in voto5()" :key="i" icon="fa-regular fa-star"/>
+
         </span>
     </div>
 
@@ -45,9 +47,11 @@ export default {
 
         },
         voto() {
-            return Math.ceil(this.singleCard.vote_average / 2)
-
-           
+           this.voto1a5 = Math.ceil(this.singleCard.vote_average / 2);
+            return this.voto1a5
+        },
+        voto5(){
+            return (5-this.voto1a5)
         }
     }
 }
