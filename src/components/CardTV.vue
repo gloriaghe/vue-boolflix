@@ -55,7 +55,10 @@ div {
         width: 20%;
 
         .imgProgramma {
-            max-width: 80%
+            max-width: 90%;
+            height: 250px;
+            object-fit: cover;
+            object-position: center;
         }
 
         .flag {
