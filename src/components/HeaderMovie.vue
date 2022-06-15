@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'SearchMovie',
+  name: 'HeaderMovie',
   props: {
     
   },
