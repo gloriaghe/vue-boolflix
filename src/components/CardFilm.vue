@@ -9,7 +9,6 @@
             <h3>Titolo originale: {{ singleCard.original_title }}</h3>
             <span>Lingua: {{ singleCard.original_language }}</span>
             <img class="flag" :src="flag(this.singleCard.original_language)" :alt="singleCard.original_language">
-            <!-- <span>Voto: {{ singleCard.vote_average }}</span> -->
             <div class="voto">
                 <span><strong>Voto: </strong></span>
                 <span class="stelle">
