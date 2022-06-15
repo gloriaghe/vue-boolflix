@@ -7,7 +7,9 @@
         <div v-if="loadingCard" id="loadCard">Sto cercando....</div>
         <div v-else class="cards">
           <H2 v-if="title">FILM</H2>
+          <GenereFilm @search="searchGenere" :genre="genereFilm" />
           <CardFilm v-for="(element, i) in movieCard" :key="i" :singleCard="element" />
+          <GenereTV />
           <h2 v-if="title">TELEFILM</h2>
           <CardTV v-for="element in movieTVCard" :key="element.id" :singleCard="element" />
         </div>
@@ -22,13 +24,17 @@ import axios from "axios";
 import HeaderMovie from './components/HeaderMovie.vue'
 import CardFilm from './components/CardFilm.vue';
 import CardTV from './components/CardTV.vue';
+import GenereFilm from "./components/GenereFilm.vue";
+import GenereTV from "./components/GenereTV.vue";
 
 export default {
   name: 'App',
   components: {
     HeaderMovie,
     CardFilm,
-    CardTV
+    CardTV,
+    GenereFilm,
+    GenereTV
   },
   data() {
     return {
@@ -43,10 +49,25 @@ export default {
       userFilm: "",
       loadingCard: false,
       title: false,
+      //genere
+      genereFilm: [],
+      genereTV: [],
+      userGenre: "",
+      genereDiverso: [],
+
     }
   },
+  created() {
+    this.getGenere(this.apiGenereFilm, this.genereFilm);
+    this.getGenere(this.apiGenereTV, this.genereFilm);
+    // this.pushGenre()
+  },
   methods: {
-
+    //genere
+    searchGenere(genreuser) {
+      this.userGenre = genreuser;
+      console.log(genreuser)
+    },
     getMovie(API) {
 
       this.loadingCard = true;
@@ -86,6 +107,35 @@ export default {
       this.getMovie(this.apiUrlMovie)
       this.getTv(this.apiUrlTV)
     },
+
+    getGenere(API, dovePUSHO) {
+      axios.get(API)
+        .then((result) => {
+          dovePUSHO = result.data;
+          console.log(dovePUSHO);
+          
+        })
+        //segnala errori api
+        .catch((error) => {
+          console.log("Errore", error);
+        });
+
+
+    },
+    pushGenre() {
+              console.log(this.genereFilm)
+
+      this.genereFilm.forEach((element) => {
+
+        console.log(element.name);
+        if (!this.genereDiverso.includes(element.name)) {
+          this.genereDiverso.push(element.name);
+
+          console.log(this.genereDiverso)
+
+        }
+      })
+    }
 
   },
 
