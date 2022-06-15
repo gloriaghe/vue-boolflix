@@ -3,15 +3,17 @@
     <div class="cardFilm">
         <img class="imgProgramma" :src="'https://image.tmdb.org/t/p/w342/' + singleCard.poster_path"
             :alt="singleCard.name">
-        <h2>Titolo: {{ singleCard.name }} </h2>
-        <h3>Titolo originale: {{ singleCard.original_name }}</h3>
-        <span>Lingua: {{ singleCard.original_language }}</span>
-        <img class="flag" :src="flag(singleCard.original_language)" :alt="singleCard.original_language">
-        <span >
-            <font-awesome-icon v-for="(element, i) in voto()" :key="i+'n'" icon="fa-solid fa-star"/>
-            <font-awesome-icon v-for="(element, i) in voto5()" :key="i" icon="fa-regular fa-star"/>
-
-        </span>
+        <div class="textCard">
+            <h2>Titolo: {{ singleCard.name }} </h2>
+            <h3 if="singleCard.name !=  singleCard.original_name">Titolo originale: {{ singleCard.original_name }}</h3>
+            <span>Lingua: {{ singleCard.original_language }}</span>
+            <img class="flag" :src="flag(singleCard.original_language)" :alt="singleCard.original_language">
+            <span>
+                <font-awesome-icon v-for="(element, i) in voto()" :key="i + 'n'" icon="fa-solid fa-star" />
+                <font-awesome-icon v-for="(element, i) in voto5()" :key="i" icon="fa-regular fa-star" />
+            </span>
+            <span>{{ singleCard.overview }}</span>
+        </div>
 
     </div>
 
@@ -46,8 +48,8 @@ export default {
             this.voto1a5 = Math.ceil(this.singleCard.vote_average / 2);
             return this.voto1a5
         },
-        voto5(){
-            return (5-this.voto1a5)
+        voto5() {
+            return (5 - this.voto1a5)
         }
     }
 }
@@ -55,23 +57,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-div {
-    display: flex;
-    flex-direction: column;
 
-    .cardFilm {
-        width: 20%;
+@import '../assets/card.scss';
 
-        .imgProgramma {
-            max-width: 90%;
-            height: 250px;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .flag {
-            width: 10%;
-        }
-    }
-}
 </style>
