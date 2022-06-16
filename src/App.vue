@@ -53,17 +53,16 @@ export default {
       loadingCard: false,
       title: false,
       //genere
-      genereFilm: [],
-      genereTV: [],
+      // genereFilm: [],
+      // genereTV: [],
       userGenre: "",
       
 
     }
   },
   created() {
-    this.getGenere(this.apiGenereFilm, this.genereFilm);
-    this.getGenere(this.apiGenereTV, this.genereTV);
-    // this.pushGenre()
+    // this.getGenere(this.apiGenereFilm, this.genereFilm);
+    // this.getGenere(this.apiGenereTV, this.genereTV);
   },
   methods: {
     //genere
@@ -110,20 +109,7 @@ export default {
       this.getTv(this.apiUrlTV)
     },
 
-    getGenere(API, dovePUSHO) {
-      axios.get(API)
-        .then((result) => {
-          dovePUSHO = result.data;
-          console.log(dovePUSHO);
-
-        })
-        //segnala errori api
-        .catch((error) => {
-          console.log("Errore", error);
-        });
-
-
-    },
+   
     
 
   },
