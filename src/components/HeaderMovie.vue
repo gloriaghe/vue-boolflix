@@ -67,6 +67,7 @@ header {
       padding: 7px 20px;
       color: white;
       border-radius: 20px;
+      margin-left: 20px;
     }
   }
 }

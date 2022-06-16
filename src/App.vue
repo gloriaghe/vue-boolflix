@@ -6,16 +6,17 @@
       <div>
         <div v-if="loadingCard" id="loadCard">Sto cercando....</div>
         <div v-else class="cards">
+          <GenereFilm @search="searchGenere"  /> <br>
           <H2 v-if="title">FILM</H2>
-          <GenereFilm @search="searchGenere" :genre="genereFilm" />
           <CardFilm v-for="(element, i) in movieCard" :key="i" :singleCard="element" />
-          <GenereTV />
+          <GenereTV /> <br>
           <h2 v-if="title">TELEFILM</h2>
           <CardTV v-for="element in movieTVCard" :key="element.id" :singleCard="element" />
         </div>
 
       </div>
     </main>
+
   </div>
 </template>
 
@@ -27,6 +28,7 @@ import CardTV from './components/CardTV.vue';
 import GenereFilm from "./components/GenereFilm.vue";
 import GenereTV from "./components/GenereTV.vue";
 
+
 export default {
   name: 'App',
   components: {
@@ -34,7 +36,8 @@ export default {
     CardFilm,
     CardTV,
     GenereFilm,
-    GenereTV
+    GenereTV,
+    
   },
   data() {
     return {
@@ -53,13 +56,13 @@ export default {
       genereFilm: [],
       genereTV: [],
       userGenre: "",
-      genereDiverso: [],
+      
 
     }
   },
   created() {
     this.getGenere(this.apiGenereFilm, this.genereFilm);
-    this.getGenere(this.apiGenereTV, this.genereFilm);
+    this.getGenere(this.apiGenereTV, this.genereTV);
     // this.pushGenre()
   },
   methods: {
@@ -93,7 +96,6 @@ export default {
           this.movieTVTotal = result.data;
           this.movieTVCard = this.movieTVTotal.results;
           console.log(this.movieTVCard);
-
         })
         //segnala errori api
         .catch((error) => {
@@ -113,7 +115,7 @@ export default {
         .then((result) => {
           dovePUSHO = result.data;
           console.log(dovePUSHO);
-          
+
         })
         //segnala errori api
         .catch((error) => {
@@ -122,20 +124,7 @@ export default {
 
 
     },
-    pushGenre() {
-              console.log(this.genereFilm)
-
-      this.genereFilm.forEach((element) => {
-
-        console.log(element.name);
-        if (!this.genereDiverso.includes(element.name)) {
-          this.genereDiverso.push(element.name);
-
-          console.log(this.genereDiverso)
-
-        }
-      })
-    }
+    
 
   },
 
@@ -154,7 +143,7 @@ export default {
 
   main {
 
-    height: calc(100vh - 80px);
+    height: calc(100vh - 140px);
     overflow: auto;
 
     #loadCard {
