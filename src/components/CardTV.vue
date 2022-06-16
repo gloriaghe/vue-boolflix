@@ -39,7 +39,7 @@ export default {
     },
     methods: {
         flag(lingua) {
-            if (lingua === '"en" ||  "it" ||  "es" || "fr"') {
+            if (lingua === "en" || lingua === "it" || lingua === "es" || lingua === "fr") {
                 return require('../assets/flag/' + lingua + ".png")
 
             } else {
