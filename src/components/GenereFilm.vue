@@ -1,9 +1,10 @@
 <template>
     <select name="Genere" v-model="inputGenre" @change="$emit('search', inputGenre)">
-        <option disabled value="">Seleziona genere Film:</option>
+        <option disabled value="">Genere Film:</option>
         <option value="ALL">Tutti</option>
         <option v-for="genere in genereVari" :key="genere.id">
-            {{ genere.name }}
+            {{ genere.id }}
+            <span>{{ genere.name }}</span>
         </option>
     </select>
 </template>
@@ -27,19 +28,17 @@ export default {
     },
     created() {
 
-        this.getGenere(this.apiGenereFilm, this.genereApi, this.genereVari);
+        this.getGenere();
        
     },
     methods: {
 
-        getGenere(API, dovePUSHO, dovepusho2 ) {
-            axios.get(API)
+        getGenere() {
+            axios.get(this.apiGenereFilm)
                 .then((result) => {
-                    dovePUSHO = result.data;
-                    console.log(dovePUSHO)
-                    dovepusho2 = dovePUSHO.genres
+                    this.genereApi = result.data;
+                    this.genereVari = this.genereApi.genres
 
-                    console.log("qui c'è?", dovepusho2);
                     
                 })
                 //segnala errori api
@@ -58,5 +57,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-select {}
 </style>

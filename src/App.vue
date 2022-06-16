@@ -7,9 +7,10 @@
         <div v-if="loadingCard" id="loadCard">Sto cercando....</div>
         <div v-else class="cards">
           <GenereFilm @search="searchGenere"  /> <br>
+          <GenereTV /> 
           <H2 v-if="title">FILM</H2>
-          <CardFilm v-for="(element, i) in movieCard" :key="i" :singleCard="element" />
-          <GenereTV /> <br>
+          <CardFilm v-for="(element, i) in movieCard" :key="i" :singleCard="element" /> 
+          
           <h2 v-if="title">TELEFILM</h2>
           <CardTV v-for="element in movieTVCard" :key="element.id" :singleCard="element" />
         </div>
@@ -44,7 +45,6 @@ export default {
       apiUrlMovie: "https://api.themoviedb.org/3/search/movie?api_key=65f992091f5fb4cada3e4991ff084ab7&language=it-IT&query=",
       apiUrlTV: "https://api.themoviedb.org/3/search/tv?api_key=65f992091f5fb4cada3e4991ff084ab7&language=en-US&include_adult=false&query=",
       apiGenereFilm: "https://api.themoviedb.org/3/genre/movie/list?api_key=65f992091f5fb4cada3e4991ff084ab7&language=it-IT",
-      apiGenereTV: "https://api.themoviedb.org/3/genre/tv/list?api_key=65f992091f5fb4cada3e4991ff084ab7&language=it-IT",
       movieTotal: {},
       movieCard: [],
       movieTVTotal: {},
@@ -113,7 +113,20 @@ export default {
     
 
   },
+computed: {
+    filtredMovie() {
+      //filtro per genere
+        if (this.userGenre === "" || this.userGenre === "ALL") {
+          return this.movieTVCard;
+        } else {
+          return this.movieTVCard.filter(item => {
+            return item.genre_ids.includes(this.userGenre);
+          })
+        }
 
+    },
+
+  }
 }
 </script>
 
